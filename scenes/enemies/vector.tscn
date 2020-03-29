@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://modified_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/enemies/vector.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "attack"
+length = 1.2
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_aiming"
+}, {
+"args": [  ],
+"method": "stop_aiming"
+}, {
+"args": [  ],
+"method": "start_attacking"
+}, {
+"args": [  ],
+"method": "stop_attacking"
+} ]
+}
+
+[node name="vector" type="KinematicBody2D"]
+modulate = Color( 1, 1, 0, 1 )
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 8.00816, 13.9206 )
+rotation = 3.14159
+polygon = PoolVector2Array( 6.13619, -0.0461459, 8.01652, -0.0453997, 7.98748, 1.95805, 3.06633, 6.95256, 7.98743, 12.0043, 7.98742, 13.9207, 5.95494, 13.9207, -0.0558214, 8.22971, -0.100478, 5.93528 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 10.0093
+margin_top = 15.9545
+margin_right = 24.0093
+margin_bottom = 35.9545
+rect_rotation = 180.0
+custom_fonts/font = ExtResource( 1 )
+text = "<"
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]

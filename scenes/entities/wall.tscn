@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://modified_font.tres" type="DynamicFont" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6, 10 )
+
+[node name="Label" type="Label"]
+modulate = Color( 1, 0.4, 0, 1 )
+margin_right = 12.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 1 )
+custom_constants/shadow_as_outline = 0
+text = "#"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wall" type="StaticBody2D" parent="."]
+
+[node name="collisionShape" type="CollisionShape2D" parent="wall"]
+position = Vector2( 6, 10 )
+shape = SubResource( 1 )

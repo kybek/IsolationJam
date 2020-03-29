@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://modified_font.tres" type="DynamicFont" id=1]
+
+[node name="air" type="Label"]
+margin_right = 12.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 1 )
+text = " "
+__meta__ = {
+"_edit_use_anchors_": false
+}

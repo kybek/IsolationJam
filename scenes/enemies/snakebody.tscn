@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://modified_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/enemies/snakebody.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 5.84478
+
+[node name="snakebody" type="StaticBody2D"]
+modulate = Color( 1, 0, 0, 1 )
+script = ExtResource( 2 )
+
+[node name="collisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="label" type="Label" parent="."]
+margin_left = -6.80895
+margin_top = -10.8575
+margin_right = 33.191
+margin_bottom = 9.14248
+custom_fonts/font = ExtResource( 1 )
+text = "o"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="area" type="Area2D" parent="."]
+
+[node name="collisionShape" type="CollisionShape2D" parent="area"]
+shape = SubResource( 2 )
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="area" to="." method="_on_area_body_exited"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://modified_font.tres" type="DynamicFont" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 6.0
+
+[node name="snakehead" type="StaticBody2D"]
+modulate = Color( 1, 0, 1, 1 )
+
+[node name="collisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="label" type="Label" parent="."]
+margin_left = -7.45587
+margin_top = -9.48929
+margin_right = 32.5441
+margin_bottom = 10.5107
+custom_fonts/font = ExtResource( 1 )
+text = "]"
+__meta__ = {
+"_edit_use_anchors_": false
+}

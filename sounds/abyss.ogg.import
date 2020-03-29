@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/abyss.ogg-4a2da17638c848af2eda776ccb2d7d7d.oggstr"
+
+[deps]
+
+source_file="res://sounds/abyss.ogg"
+dest_files=[ "res://.import/abyss.ogg-4a2da17638c848af2eda776ccb2d7d7d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
