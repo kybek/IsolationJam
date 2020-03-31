@@ -56,6 +56,15 @@ function save_table()
   print((x1 - x0) / 20 + 1, (y1 - y0) / 20 + 1, output)
 end
 
+function love.load()
+	for i = 1, 20, 1 do
+		table[i * 20] = {}
+		for j = 1, 20, 1 do
+			table[i * 20][j * 20] = "t"
+		end
+	end
+end
+
 function love.keypressed(key, scancode, isrepeat)
   if scancode == "escape" then
     save_table()

@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://modified_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/entities/tentacle.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "move"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "\\", "/" ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5.14783, 5.31841 )
+
+[node name="Label" type="Label"]
+modulate = Color( 1, 0, 0, 0.784314 )
+margin_right = 12.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 1 )
+text = "\\"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "move"
+anims/move = SubResource( 1 )
+
+[node name="area" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="collisionShape" type="CollisionShape2D" parent="area"]
+position = Vector2( 7.03436, 8.65767 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="area" to="." method="_on_area_body_entered"]
+[connection signal="body_exited" from="area" to="." method="_on_area_body_exited"]

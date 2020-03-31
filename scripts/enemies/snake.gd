@@ -86,7 +86,7 @@ func attack() -> void:
 		INIT_LEN = max(0, INIT_LEN - 1)
 	else:
 #		print(aim)
-		player.hit("snake")
+		player.hit("snake", 0.2)
 
 func spawn_nets() -> void:
 	if player != null:

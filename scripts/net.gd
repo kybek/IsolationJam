@@ -14,16 +14,19 @@ func _physics_process(delta):
 	
 	if $L and $L.position.x > 1100:
 		$L.queue_free()
+		remove_child($L)
 	
 	if $R and $R.position.x < -100:
 		$R.queue_free()
+		remove_child($R)
 	
 	if $U and $U.position.y > 700:
 		$U.queue_free()
+		remove_child($U)
 	
 	if $D and $D.position.y < -100:
 		$D.queue_free()
-	
+		remove_child($D)
 
 func _ready():
 	$R.position = Vector2(1024.0, 0.0)

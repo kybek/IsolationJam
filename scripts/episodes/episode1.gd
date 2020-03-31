@@ -85,15 +85,9 @@ func intro():
 	sudo.rect_size = Vector2(48.0, 20.0)
 	world.add_child_below_node(world.get_node("charWindow"), sudo)
 	
-#	var snake = preload("res://scenes/enemies/snake.tscn").instance()
-#	world.add_child(snake)
-	
-#	var vector = preload("res://scenes/enemies/vector.tscn").instance()
-#	vector.player = world.get_node("player")
-#	vector.position = Vector2(60.0, 60.0)
-#	world.add_child(vector)
-	
 	completed.append("intro")
+	
+	yield(sudo, "interacted")
 
 var sudo_dialogues = [
 	[" sudo permit '@' keys.E", 0.001, "adam@~/.local/share/Trash$", 0.001]
@@ -223,7 +217,6 @@ func player_died():
 
 func _ready():
 	yield(intro(), "completed")
-	yield(self, "sudo")
 	yield(sudo_scene(), "completed")
 	yield(patience(), "completed")
 	yield(self, "e_used")

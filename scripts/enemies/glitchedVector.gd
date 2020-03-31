@@ -2,8 +2,6 @@ extends KinematicBody2D
 
 const SPEED = 300
 
-var can_attack = true
-
 var player = null
 
 var aim: bool = false
@@ -61,9 +59,11 @@ func _physics_process(delta):
 #		rotation = vec.angle()
 		player = t
 	
-	if attacking and can_attack:
-		var collision = move_and_collide(Vector2(1.0, 0.0).rotated(rotation) * SPEED * delta)
-		if collision == null:
-			return
-		if collision.collider.name == "player":
-			collision.collider.hit("vector", delta)
+	if attacking:
+		$Particles2D.emitting = true
+
+signal interacted
+
+func _on_area_body_entered(body):
+	if body.name == "player":
+		emit_signal("interacted")

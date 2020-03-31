@@ -72,7 +72,7 @@ func intro():
 	$camera.current = false
 	var world = preload("res://scenes/world.tscn").instance()
 	world.name = "world"
-	world.get_node("charWindow").filepath = "res://maps/episode0.gd"
+	world.get_node("charWindow").filepath = "res://maps/walls.gd"
 	
 	add_child(world)
 	
@@ -81,36 +81,51 @@ func intro():
 			if world.get_node("charWindow").get_node(str(i * world.get_node("charWindow").COLS + j)).text == ".":
 				world.get_node("charWindow").get_node(str(i * world.get_node("charWindow").COLS + j)).text = mutate(world.get_node("charWindow").get_node(str(i * world.get_node("charWindow").COLS + j)).text)
 	
-	world.get_node("player").position = Vector2(55.5, 10.0)
-#	var box = preload("res://scenes/entities/box.tscn").instance()
-#	box.global_position = world.get_node("player").global_position - Vector2(30.0, 50.0)
-#	box.player = world.get_node("player")
-#	world.add_child(box)
+	world.get_node("player").position = world.get_node("charWindow").rect_global_position
 	
-#	var snake = preload("res://scenes/enemies/snake.tscn").instance()
-#	world.add_child(snake)
+	get_node("world/player").permit("E")
+	get_node("world/player").permit("Q")
 	
-	var vector = preload("res://scenes/enemies/vector.tscn").instance()
-	vector.player = world.get_node("player")
-	vector.global_position = world.get_node("charWindow").rect_global_position + Vector2(250.0, 0.0)
-#	vector.position = Vector2(60.0, 60.0)
-	world.add_child(vector)
+	var snake0 = preload("res://scenes/enemies/snake.tscn").instance()
+	snake0.name = "snake"
+	snake0.INIT_LEN = 20
+	snake0.global_position = Vector2(512.0, 0.0)
+	snake0.player = $world/player
 	
-	vector = preload("res://scenes/enemies/vector.tscn").instance()
-	vector.player = world.get_node("player")
-	vector.global_position = world.get_node("charWindow").rect_global_position - Vector2(250.0, 0.0)
-#	vector.position = Vector2(60.0, 60.0)
-	world.add_child(vector)
+	world.add_child(snake0)
 	
-	var eof = preload("res://scenes/entities/eof.tscn").instance()
-	eof.name = "eof"
+	var vector0 = preload("res://scenes/enemies/vector.tscn").instance()
+	vector0.name = "vector"
+	vector0.global_position = Vector2(510.0, 0.0)
+	vector0.player = $world/player
+	world.add_child(vector0)
+	
+	var vector1 = preload("res://scenes/enemies/vector.tscn").instance()
+	vector1.name = "vector"
+	vector1.global_position = Vector2(514.0, 0.0)
+	vector1.player = $world/player
+	world.add_child(vector1)
+	
+	var vector2 = preload("res://scenes/enemies/vector.tscn").instance()
+	vector2.name = "vector"
+	vector2.global_position = Vector2(512.0, 150.0)
+	vector2.player = $world/player
+	world.add_child(vector2)
+	
+	var exit = preload("res://scenes/entities/exit.tscn").instance()
+	exit.name = "exit"
 #	32, 12
-	eof.rect_global_position = world.get_node("charWindow").rect_global_position + Vector2(40 / 2 * 12, 20 / 2 * 20)
-	world.add_child(eof)
+	exit.rect_global_position = Vector2(524.0, 20.0)
+	world.add_child(exit)
 	
 	completed.append("intro")
 	
-	yield(eof, "interacted")
+	yield(exit, "interacted")
+	
+	exit.rect_global_position = Vector2(524.0, 580.0)
+	
+	yield(exit, "interacted")
+	
 	emit_signal("next_level")
 
 func player_died():

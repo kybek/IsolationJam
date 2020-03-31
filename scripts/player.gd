@@ -20,6 +20,7 @@ func get_move_vec() -> Vector2:
 func sudo():
 	get_node("..").sudo()
 
+
 func picked_up(object) -> void:
 	if object.name == "sudo":
 		sudo()
@@ -29,6 +30,8 @@ func picked_up(object) -> void:
 		get_node("../..").emit_signal("trojanexe")
 	elif object.name == "snakebody":
 		snakebody()
+	elif object.name == "exit":
+		get_node("../..").emit_signal("exit")
 
 func snakebody():
 	get_node("../..").emit_signal("snakebody")
@@ -97,13 +100,18 @@ func q_power() -> void:
 	else:
 		stop_q_power()
 
-func hit(by: String):
+func hit(by: String, delta: float):
+	delta *= 100.0 / 1.0
 	if by == "vector":
-		self.modulate.a -= 5.0 / 255.0
+		self.modulate.a -= delta / 255.0
 		if self.modulate.a * 255 <= 155.0:
 			get_node("../..").player_died()
 	if by == "snake":
-		self.modulate.a -= 10.0 / 255.0
+		self.modulate.a -= delta / 255.0
+		if self.modulate.a * 255 <= 155.0:
+			get_node("../..").player_died()
+	if by == "tentacle":
+		self.modulate.a -= delta / 255.0
 		if self.modulate.a * 255 <= 155.0:
 			get_node("../..").player_died()
 
@@ -126,3 +134,4 @@ func _input(event):
 
 func _ready():
 	$frame0.hide()
+	$Camera2D.current = true

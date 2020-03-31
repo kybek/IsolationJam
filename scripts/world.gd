@@ -11,3 +11,7 @@ func sudo():
 func _ready():
 	var player = preload("res://scenes/player.tscn").instance()
 	add_child(player)
+
+
+func _on_charWindow_reseted():
+	pass # Replace with function body.

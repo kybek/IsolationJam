@@ -33,6 +33,8 @@ func create_new(c: String):
 		return preload("res://scenes/entities/grass.tscn").instance()
 	if c == '#' or c == 'w':
 		return preload("res://scenes/entities/wall.tscn").instance()
+	if c == 't':
+		return preload("res://scenes/entities/tentacle.tscn").instance()
 
 func load_map(path: String) -> void:
 	clear()

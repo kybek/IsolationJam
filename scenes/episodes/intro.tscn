@@ -1,17 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scripts/episodes/intro.gd" type="Script" id=1]
-
-[sub_resource type="ParticlesMaterial" id=1]
-flag_disable_z = true
-spread = 180.0
-gravity = Vector3( 0, 19.6, 0 )
-initial_velocity = 11.36
-angular_velocity = 114.55
-angular_velocity_random = 1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 2.0
+[ext_resource path="res://scenes/Particles2D.tscn" type="PackedScene" id=2]
 
 [node name="intro" type="RichTextLabel"]
 anchor_right = 1.0
@@ -37,11 +27,5 @@ autostart = true
 [node name="camera" type="Camera2D" parent="."]
 position = Vector2( 55.5, 10 )
 
-[node name="Particles2D" type="Particles2D" parent="."]
-position = Vector2( 55.5, 10 )
-emitting = false
-amount = 10
-one_shot = true
-speed_scale = 3.0
-process_material = SubResource( 1 )
+[node name="Particles2D" parent="." instance=ExtResource( 2 )]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
