@@ -52,10 +52,10 @@ __meta__ = {
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="dialogue" type="RichTextLabel" parent="CanvasLayer2"]
-margin_left = 119.96
-margin_top = 73.9468
-margin_right = 719.96
-margin_bottom = 673.947
+margin_left = 120.0
+margin_top = 74.0
+margin_right = 907.0
+margin_bottom = 674.0
 custom_fonts/normal_font = ExtResource( 8 )
 text = "BOOTING"
 script = ExtResource( 9 )

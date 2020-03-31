@@ -1,10 +1,10 @@
 extends Node2D
 
 var episodes = [
-#	preload("res://scenes/episodes/episode5.tscn"),
-	preload("res://scenes/episodes/intro.tscn"),
-	preload("res://scenes/episodes/episode0.tscn"),
-	preload("res://scenes/episodes/episode1.tscn"),
+#	preload("res://scenes/episodes/episode0.tscn"),
+#	preload("res://scenes/episodes/intro.tscn"),
+#	preload("res://scenes/episodes/episode0.tscn"),
+#	preload("res://scenes/episodes/episode1.tscn"),
 	preload("res://scenes/episodes/episode2.tscn"),
 	preload("res://scenes/episodes/episode3.tscn"),
 	preload("res://scenes/episodes/episode4.tscn"),
@@ -13,9 +13,9 @@ var episodes = [
 
 var titles = [
 #	"TEST",
-	"INTRO",
-	"EPISODE0",
-	"EPISODE1",
+#	"INTRO",
+#	"EPISODE0",
+#	"EPISODE1",
 	"EPISODE2",
 	"EPISODE3",
 	"EPISODE4",
@@ -28,10 +28,10 @@ signal title_changed
 
 func episode_finished():
 	var t = $episode
-	t.get_node("camera").current = false
+#	t.get_node("camera").current = false
+	t.call_deferred("free")
 #	call_deferred("remove_child", t)
 	remove_child(t)
-	t.queue_free()
 	current_episode += 1
 	if current_episode < len(episodes):
 		t = episodes[current_episode].instance()
@@ -50,9 +50,10 @@ func episode_finished():
 func restart_scene():
 	stop_music()
 	var t = $episode
-	t.get_node("camera").current = false
+#	t.get_node("camera").current = false
+	t.call_deferred("free")
+#	call_deferred("remove_child", t)
 	remove_child(t)
-	t.queue_free()
 	
 	t = episodes[current_episode].instance()
 	t.name = "episode"
@@ -63,12 +64,13 @@ func restart_scene():
 #	t.get_node("camera").current = true
 #	emit_signal("title_changed", titles[current_episode])
 
-func load_music(m):
-	$ambient.stream = m
-	$ambient.play()
+func load_music(m, channel = "ambient"):
+	print(channel)
+	get_node(channel).stream = m
+	get_node(channel).play()
 
-func stop_music():
-	$ambient.stop()
+func stop_music(channel = "ambient"):
+	get_node(channel).stop()
 
 func _ready():
 	get_node("../CanvasLayer2/dialogue").modulate.r = 0.0

@@ -8,13 +8,13 @@ func _process(delta):
 		return
 	
 	var t = get_node("../../sceneManager")
-	if t.get_node("episode") == null:
+	if t.has_node("episode") == false:
 		return
 	t = t.get_node("episode")
-	if t.get_node("world") == null:
+	if t.has_node("world") == false:
 		return
 	t = t.get_node("world")
-	if t.get_node("player") == null:
+	if t.has_node("player") == false:
 		return
 	t = t.get_node("player")
 	text = String(round(t.position.x)) + ":" + String(round(t.position.y)) + " / " + String(t.modulate.a * 255 - 155.0)

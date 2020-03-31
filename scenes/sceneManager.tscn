@@ -6,3 +6,5 @@
 script = ExtResource( 1 )
 
 [node name="ambient" type="AudioStreamPlayer2D" parent="."]
+
+[node name="nets" type="AudioStreamPlayer2D" parent="."]

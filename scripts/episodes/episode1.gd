@@ -111,7 +111,6 @@ func sudo_scene():
 		yield(printf(dialogues[i][0], dialogues[i][1], dialogues[i][2]), "completed")
 		yield(get_tree().create_timer(dialogues[i][3]), "timeout")
 	
-	get_node("world/player").permit("E")
 	completed.append("sudo")
 
 signal sudo
@@ -219,6 +218,7 @@ func _ready():
 	yield(intro(), "completed")
 	yield(sudo_scene(), "completed")
 	yield(patience(), "completed")
+	get_node("world/player").permit("E")
 	yield(self, "e_used")
 	completed.append("e_used")
 	yield(scanlines(), "completed")
