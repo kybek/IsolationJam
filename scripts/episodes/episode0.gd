@@ -111,6 +111,9 @@ func intro():
 	completed.append("intro")
 	
 	yield(eof, "interacted")
+	
+	$world.call_deferred("remove_child", eof)
+	
 	emit_signal("next_level")
 
 func player_died():

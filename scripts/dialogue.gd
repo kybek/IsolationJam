@@ -8,9 +8,9 @@ func _process(delta):
 		return
 	
 	var t = get_node("../../sceneManager")
-	if t.has_node("episode") == false:
+	if t.epp == null:
 		return
-	t = t.get_node("episode")
+	t = t.epp
 	if t.has_node("world") == false:
 		return
 	t = t.get_node("world")

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nets.wav-cf9580c128ee658497226fbd40933a12.sample"
+
+[deps]
+
+source_file="res://sounds/nets.wav"
+dest_files=[ "res://.import/nets.wav-cf9580c128ee658497226fbd40933a12.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

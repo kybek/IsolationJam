@@ -91,7 +91,7 @@ func attack() -> void:
 func spawn_nets() -> void:
 	if player != null:
 		get_node("..").add_child(preload("res://scenes/net.tscn").instance())
-		get_node("../../..").load_music(preload("res://sounds/nets.ogg"), "nets")
+		get_node("../../..").load_music(sounds.nets, "nets")
 
 func _on_Timer_timeout():
 	if player != null:

@@ -26,9 +26,23 @@ _global_script_class_icons={
 
 [application]
 
-config/name="IsolationJamGodot"
+config/name="The Fruit of the Spirit"
+config/description="You are just a character, in a terminal, on a computer screen. You have no memory, nor thoughts. Yet, somehow, you woke up. And the computer notices."
 run/main_scene="res://scenes/DOS.tscn"
-config/icon="res://icon.png"
+run/disable_stdout=true
+run/disable_stderr=true
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://icon32x32.png"
+
+[autoload]
+
+sounds="*res://scripts/sounds.gd"
+
+[display]
+
+window/size/resizable=false
 
 [input]
 

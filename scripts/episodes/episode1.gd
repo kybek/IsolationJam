@@ -75,10 +75,10 @@ func intro():
 	add_child(world)
 	
 	world.get_node("player").position = Vector2(55.5, 10.0)
-	var box = preload("res://scenes/entities/box.tscn").instance()
-	box.global_position = world.get_node("player").global_position - Vector2(30.0, 50.0)
-	box.player = world.get_node("player")
-	world.add_child(box)
+#	var box = preload("res://scenes/entities/box.tscn").instance()
+#	box.global_position = world.get_node("player").global_position - Vector2(30.0, 50.0)
+#	box.player = world.get_node("player")
+#	world.add_child(box)
 	
 	var sudo = preload("res://scenes/entities/sudo.tscn").instance()
 	sudo.rect_position = Vector2(800.0, 300.0)
@@ -97,7 +97,7 @@ func sudo_scene():
 	yield(get_tree(), "idle_frame")
 #	var world = get_node("world")
 #	var box = world.get_node("box")
-	get_node("world/box").player = null
+#	get_node("world/box").player = null
 	for i in range(0, 50):
 		var p = Vector2(100 + randi() % 800, 100 + randi() % 400)
 		get_node("world/player").position = p
@@ -129,6 +129,7 @@ func scanlines():
 		yield(get_tree().create_timer(dialogues[i][3]), "timeout")
 	
 	$world.add_child(preload("res://scenes/net.tscn").instance())
+	get_node("..").load_music(sounds.nets, "nets")
 	
 	yield(self, "e_used")
 	yield(get_tree().create_timer(4.0), "timeout")
@@ -170,7 +171,7 @@ var fruit = [
 
 func patience():
 	hide()
-	get_node("..").load_music(preload("res://sounds/fruit_of_the_spirit.ogg"))
+	get_node("..").load_music(sounds.fruit)
 	get_node("../../CanvasLayer2/dialogue").detect_position = false
 	get_node("../../CanvasLayer2/dialogue").text = ""
 	for i in range(len(fruit)):

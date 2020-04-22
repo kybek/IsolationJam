@@ -41,6 +41,8 @@ var can_move: bool = true
 func _process(delta):
 	if can_move:
 		move_and_slide(get_move_vec() * SPEED)
+	if self.modulate.a * 255 <= 155.0:
+		get_node("../..").player_died()
 
 var permissions = []
 
@@ -82,7 +84,7 @@ func start_q_power() -> void:
 	set_collision_layer_bit(1, false)
 	set_collision_mask_bit(0, false)
 	set_collision_mask_bit(3, false)
-	get_node("../../..").load_music(preload("res://sounds/peace.ogg"))
+	get_node("../../..").load_music(sounds.peace)
 
 func stop_q_power() -> void:
 	current_power = ""
@@ -104,14 +106,17 @@ func hit(by: String, delta: float):
 	delta *= 100.0 / 1.0
 	if by == "vector":
 		self.modulate.a -= delta / 255.0
+#		get_node("../../..").load_music(preload("res://sounds/hit.gg"), "hit")
 		if self.modulate.a * 255 <= 155.0:
 			get_node("../..").player_died()
 	if by == "snake":
 		self.modulate.a -= delta / 255.0
+#		get_node("../../..").load_music(preload("res://sounds/hit.gg"), "hit")
 		if self.modulate.a * 255 <= 155.0:
 			get_node("../..").player_died()
 	if by == "tentacle":
 		self.modulate.a -= delta / 255.0
+#		get_node("../../..").load_music(preload("res://sounds/hit.gg"), "hit")
 		if self.modulate.a * 255 <= 155.0:
 			get_node("../..").player_died()
 

@@ -130,7 +130,7 @@ var fruit = [
 
 func kindness():
 	hide()
-	get_node("..").load_music(preload("res://sounds/fruit_of_the_spirit.ogg"))
+	get_node("..").load_music(sounds.fruit)
 	get_node("../../CanvasLayer2/dialogue").detect_position = false
 	get_node("../../CanvasLayer2/dialogue").text = ""
 	for i in range(len(fruit)):

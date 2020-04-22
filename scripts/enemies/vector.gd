@@ -17,6 +17,8 @@ func stop_aiming():
 var attacking: bool = false
 
 func start_attacking():
+	if player and can_attack:
+		get_node("../../..").load_music(sounds.vector, "vector")
 	attacking = true
 
 func stop_attacking():
